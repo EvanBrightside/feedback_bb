@@ -5,7 +5,7 @@ class ReplyMailer < ApplicationMailer
     mail(
       to: "<#{@reply.feedback.email}>",
       subject: 'New reply',
-      from: "<#{@reply.current_user.email}>"
+      from: "<#{@reply.admin_email}>"
     )
   end
 end

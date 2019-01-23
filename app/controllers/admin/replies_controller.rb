@@ -6,13 +6,10 @@ class Admin::RepliesController < Admin::BaseController
   end
 
   def create
-    @reply = feedback.replies.build(reply_params)
-    if @reply.save
-      @reply.feedback.update(replied: true)
-      redirect_to admin_feedbacks_path
-    else
-      render 'new'
-    end
+    @reply = ReplyService.new(reply_params, feedback: feedback).call
+    return render action: :new if @reply.errors.present?
+
+    redirect_to admin_feedbacks_path
   end
 
   private

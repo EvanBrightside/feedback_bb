@@ -4,12 +4,10 @@ class FeedbacksController < ApplicationController
   end
 
   def create
-    @feedback = Feedback.new(feedback_params)
-    if @feedback.save
-      redirect_to :new_feedback
-    else
-      render :new
-    end
+    @feedback = FeedbackService.new(feedback_params).call
+    return render action: :new if @feedback.errors.present?
+
+    redirect_to new_feedback_path
   end
 
   private
