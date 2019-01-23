@@ -25,7 +25,7 @@ class ReplyService
     end
 
     def send_mail
-      ReplyMailer.reply_message(self).deliver_now
+      Reply::SendEmailToCustomerWorker.perform_async(reply.id, admin_email)
     end
 
     def current_user

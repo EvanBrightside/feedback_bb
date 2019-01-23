@@ -21,6 +21,8 @@ gem 'simple_form'
 
 gem 'draper'
 
+gem 'sidekiq'
+
 gem 'whenever', require: false
 
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -31,8 +33,8 @@ group :development, :test do
   gem 'faker'
   gem 'pry'
   gem 'pry-rails'
-  gem 'rspec-its'
   gem 'rspec-rails'
+  gem 'rspec-sidekiq'
 end
 
 group :development do

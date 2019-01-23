@@ -20,6 +20,6 @@ class FeedbackService
     end
 
     def send_mail
-      FeedbackMailer.feedback_created(self).deliver_now
+      Feedback::SendEmailToAdminWorker.perform_async(feedback.id)
     end
 end

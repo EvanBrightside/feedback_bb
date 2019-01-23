@@ -15,11 +15,13 @@
 
 ## Usage
 * localhost:3000
+* bundle exec sidekiq
 
 ## Admin panel
-* localhost:3000/admin
+* web: `localhost:3000/admin`
 * login: `admin@admin.io`
 * password: `123456`
+* sidekiq: `localhost:3000/sidekiq`- only for admins
 
 ## Tests
 * bundle exec rspec spec

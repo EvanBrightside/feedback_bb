@@ -14,28 +14,28 @@ RSpec.describe FeedbackService, type: :service do
     context 'is valid and create feedback' do
 
       it { expect { subject }.to(change { Feedback.count }.by(1)) }
-      it { expect { subject }.to(change { ActionMailer::Base.deliveries.count }.by(1)) }
+      it { expect { subject }.to(change { Feedback::SendEmailToAdminWorker.jobs.size }.by(1)) }
     end
 
     context 'email is blank' do
       let(:email) { nil }
 
       it { expect { subject }.to(change { Feedback.count }.by(1)) }
-      it { expect { subject }.to(change { ActionMailer::Base.deliveries.count }.by(1)) }
+      it { expect { subject }.to(change { Feedback::SendEmailToAdminWorker.jobs.size }.by(1)) }
     end
 
     context 'email is invalid' do
       let(:email) { Faker::Hipster.name }
 
       it { expect { subject }.not_to(change { Feedback.count }) }
-      it { expect { subject }.not_to(change { ActionMailer::Base.deliveries.count }) }
+      it { expect { subject }.not_to(change { Feedback::SendEmailToAdminWorker.jobs.size }) }
     end
 
     context 'question is blank' do
       let(:body) { nil }
 
       it { expect { subject }.not_to(change { Feedback.count }) }
-      it { expect { subject }.not_to(change { ActionMailer::Base.deliveries.count }) }
+      it { expect { subject }.not_to(change { Feedback::SendEmailToAdminWorker.jobs.size }) }
     end
   end
 end
