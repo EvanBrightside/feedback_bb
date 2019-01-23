@@ -1,6 +1,4 @@
 class FeedbackMailer < ApplicationMailer
-
-
   def feedback_created(feedback)
     @feedback = feedback
 
