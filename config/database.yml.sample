@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: feedback_bb_development
+
+test:
+  <<: *default
+  database: feedback_bb_test
+
+production:
+  <<: *default
+  database: feedback_bb_production
+  username: feedback_bb
+  password:

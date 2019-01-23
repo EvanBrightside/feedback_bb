@@ -1,0 +1,50 @@
+<div class="col-md-8">
+  <h2>Список сообщений</h2>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Questions</th>
+      </tr>
+      <tr>
+        <th scope="col">Text</th>
+        <th scope="col">Eamil</th>
+        <th scope="col">#</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @questions.each do |question| %>
+        <tr>
+          <% unless question.replied? %>
+          <td><%= question.body %></td>
+          <td><%= question.email %></td>
+          <td><%= link_to 'Reply', new_admin_feedback_reply_path(question), class: "btn btn-default btn-xs" %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Reviews</th>
+      </tr>
+      <tr>
+        <th scope="col">Text</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td><%= review.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'Back to Feedback Form', root_path, class: "btn btn-primary btn-sm" %>
+</div>

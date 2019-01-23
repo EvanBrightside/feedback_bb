@@ -1,0 +1,37 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4" style="padding: 0px 3.8%;">
+			<h1 class="text-center">Feedback Form!</h1>
+
+			<div>
+				<%= form_for @feedback do |f| %>
+				<% if @feedback.errors.any? %>
+				<div id="error_explanation">
+					<h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+
+					<ul>
+						<% @feedback.errors.full_messages.each do |message| %>
+						<li><%= message %></li>
+						<% end %>
+					</ul>
+				</div>
+				<% end %>
+
+				<%= f.label :message %><br>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+					<%= f.text_area :body, placeholder: "Type your message here", as: :text, requred: true, size: "55x5", class: 'form-control' %>
+				</div>
+        <br>
+        <%= f.label :email %><br>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+          <%= f.email_field :email, placeholder: "Ivanov@gmail.com",  size: 35, class: 'form-control' %>
+        </div>
+				<br>
+				  <%= f.submit 'Send Message', :class=> "btn btn-primary btn-block" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
