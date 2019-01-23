@@ -19,6 +19,8 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'simple_form'
 
+gem 'draper'
+
 gem 'whenever', require: false
 
 gem 'bootsnap', '>= 1.1.0', require: false

@@ -13,12 +13,12 @@
       </tr>
     </thead>
     <tbody>
-      <% @questions.each do |question| %>
+      <% @feedbacks.each do |feedback| %>
         <tr>
-          <% unless question.replied? %>
-          <td><%= question.body %></td>
-          <td><%= question.email %></td>
-          <td><%= link_to 'Reply', new_admin_feedback_reply_path(question), class: "btn btn-default btn-xs" %></td>
+          <% if feedback.question? %>
+            <td><%= feedback.body %></td>
+            <td><%= feedback.email %></td>
+            <td><%= link_to 'Reply', new_admin_feedback_reply_path(feedback), class: "btn btn-default btn-xs" %></td>
           <% end %>
         </tr>
       <% end %>
@@ -38,9 +38,11 @@
       </tr>
     </thead>
     <tbody>
-      <% @reviews.each do |review| %>
+      <% @feedbacks.each do |feedback| %>
         <tr>
-          <td><%= review.body %></td>
+          <% if feedback.review? %>
+            <td><%= feedback.body %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

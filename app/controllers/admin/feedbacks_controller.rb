@@ -1,7 +1,6 @@
 class Admin::FeedbacksController < Admin::BaseController
   def index
-    @reviews = Feedback.where(email: [nil, ''])
-    @questions = Feedback.where.not(email: [nil, ''])
+    @feedbacks = Feedback.decorate
   end
 
   def create
