@@ -34,7 +34,6 @@ group :development, :test do
   gem 'pry'
   gem 'pry-rails'
   gem 'rspec-rails'
-  gem 'rspec-sidekiq'
 end
 
 group :development do
@@ -50,4 +49,5 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'chromedriver-helper'
   gem 'selenium-webdriver'
+  gem 'rspec-sidekiq'
 end

@@ -3,7 +3,6 @@ class Feedback::SendEmailToAdminWorker
 
   def perform(id)
     feedback = Feedback.find(id)
-
-    FeedbackMailer.feedback_created(feedback).deliver
+    FeedbackMailer.feedback_created(feedback).deliver_later
   end
 end

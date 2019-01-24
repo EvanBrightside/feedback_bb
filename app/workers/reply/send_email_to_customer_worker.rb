@@ -4,6 +4,6 @@ class Reply::SendEmailToCustomerWorker
   def perform(id, admin_email)
     reply = Reply.find(id)
 
-    ReplyMailer.reply_message(reply, admin_email).deliver
+    ReplyMailer.reply_message(reply, admin_email).deliver_later
   end
 end
